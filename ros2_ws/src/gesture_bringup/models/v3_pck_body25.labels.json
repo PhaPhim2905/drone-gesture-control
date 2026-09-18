@@ -1,0 +1,64 @@
+{
+  "labels": [
+    "ASSUME_GUIDANCE",
+    "HOVER",
+    "LAND",
+    "NEGATIVE",
+    "ROLL_LEFT",
+    "ROLL_RIGHT",
+    "STOP",
+    "TAKEOFF"
+  ],
+  "roster": "v2",
+  "input_shape": [
+    25,
+    2
+  ],
+  "normalization": "pck_format.normalize_body25",
+  "arch": "pck",
+  "dataset": "dataset_v3.npz",
+  "data_fingerprint": "8169a49e9bf9",
+  "temperature": 0.9400000000000004,
+  "threshold": 0.93,
+  "k_vote": 8,
+  "fps_do_duoc": 7.9365125018449065,
+  "cv_folds": 4,
+  "cv_acc_mean": 0.9081515901017284,
+  "cv_acc_std": 0.04153956125712375,
+  "mo_phong_phat_lenh": {
+    "k_vote": 8,
+    "tau": 0.93,
+    "n_frame": 4858,
+    "n_phat": 2397,
+    "n_sai": 0,
+    "ty_le_sai": 0.0,
+    "lenh_sai_moi_phut": 0.0,
+    "take_bat_duoc": "46/48",
+    "tre_frame_trung_vi": 7.0,
+    "sai_chi_tiet": {}
+  },
+  "tu_choi_dau_vao_la": {
+    "nhieu ngau nhien": 0.865,
+    "dao khop": 0.9666666666666667,
+    "mat hai co tay": 0.7933333333333333
+  },
+  "tflite_khop_keras": 1.0,
+  "an_toan": true,
+  "canh_bao": [
+    "ASSUME_GUIDANCE: 5 take. Du chay nhung moi fold chi 1 take test -> ket qua dao dong manh. Nen len 8.",
+    "HOVER: 5 take. Du chay nhung moi fold chi 1 take test -> ket qua dao dong manh. Nen len 8.",
+    "LAND: 5 take. Du chay nhung moi fold chi 1 take test -> ket qua dao dong manh. Nen len 8.",
+    "NEGATIVE: 5 take. Du chay nhung moi fold chi 1 take test -> ket qua dao dong manh. Nen len 8.",
+    "STOP: 5 take. Du chay nhung moi fold chi 1 take test -> ket qua dao dong manh. Nen len 8.",
+    "ASSUME_GUIDANCE: take 20260909_151101_16 va 20260909_151101_17 gan nhu TRUNG DIEU KIEN (cach 0.095 < do rong noi bo 0.445). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "HOVER: take 20260909_151101_10 va 20260909_151101_8 gan nhu TRUNG DIEU KIEN (cach 0.104 < do rong noi bo 0.355). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "LAND: take 20260909_145722_1 va 20260909_151101_3 gan nhu TRUNG DIEU KIEN (cach 0.084 < do rong noi bo 0.259). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "NEGATIVE: take 20260909_151101_19 va 20260909_151101_22 gan nhu TRUNG DIEU KIEN (cach 0.269 < do rong noi bo 0.581). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "ROLL_LEFT: take 20260914_214811_12 va 20260914_214811_13 gan nhu TRUNG DIEU KIEN (cach 0.096 < do rong noi bo 0.378). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "ROLL_RIGHT: take 20260914_214811_1 va 20260914_214811_3 gan nhu TRUNG DIEU KIEN (cach 0.060 < do rong noi bo 0.303). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "STOP: take 20260909_151101_13 va 20260909_151101_14 gan nhu TRUNG DIEU KIEN (cach 0.103 < do rong noi bo 0.390). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "TAKEOFF: take 20260908_222959_0 va 20260909_151101_0 gan nhu TRUNG DIEU KIEN (cach 0.123 < do rong noi bo 0.244). Doi vi tri / goc dung roi thu lai mot trong hai.",
+    "chong lan cu chi<->cu chi 1.4%: ROLL_LEFT->ASSUME_GUIDANCE (3), STOP->ASSUME_GUIDANCE (2), ASSUME_GUIDANCE->STOP (1)  (duoi nguong, chap nhan)"
+  ],
+  "loi_chan_da_bo_qua": []
+}

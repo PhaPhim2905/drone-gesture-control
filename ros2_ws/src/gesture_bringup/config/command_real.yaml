@@ -1,0 +1,25 @@
+# command_node với PIXHAWK THẬT. THÁO CÁNH QUẠT cho lần chạy đầu.
+
+command_node:
+  ros__parameters:
+    control_mode: GUIDED
+    handback_mode: LOITER
+    speed_xy: 0.5               # m/s. Chậm cho giai đoạn test. Node từ chối > 2.0
+    takeoff_alt: 2.0
+
+    hold_sec: 1.0
+    hold_assume_guidance: 1.0
+    hold_land: 0.8
+    hold_stop: 0.6
+
+    watchdog_sec: 0.5
+    operator_lost_sec: 0.8
+    mode_grace_sec: 3.0
+
+    # Pilot TỰ gạt công tắc sang GUIDED. Cử chỉ không giành mode từ tay cầm.
+    request_guided_on_enable: false
+
+    # Tên ROLL theo hướng CỦA DRONE: ROLL_RIGHT = drone sang phải của nó =
+    # sang TRÁI của người điều khiển. Đổi true thì phải quay lại dữ liệu ROLL.
+    mirror_left_right: false
+    control_hz: 20.0

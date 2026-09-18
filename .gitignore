@@ -1,0 +1,70 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+dist/
+*.egg-info/
+.eggs/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+ENV/
+.venv-train/
+
+# ---- ROS 2 workspace: sinh lại bằng scripts/build.sh ----
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+rosbag2_*/
+
+# ---- IDE / editor ----
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ---- MAVLink / SITL logs ----
+*.tlog
+*.tlog.raw
+*.bin
+*.BIN
+*.log
+logs/
+eeprom.bin
+mav.parm
+terrain/
+
+# ---- Model ----
+# models/ ở gốc repo = nơi training/4_train.py ghi ra trên laptop (.keras,
+# .oof.npz, bản nháp). KHÔNG đẩy. Model dùng để bay nằm trong gói ROS, chép sang
+# bằng training/5_export_to_ros.py và ĐƯỢC đẩy lên.
+*.pt
+*.onnx
+*.whl
+# "/models/" có dấu / đầu: CHỈ thư mục ở gốc. Viết "models/" là chặn luôn
+# gesture_bringup/models/ và dòng ! bên dưới không mở lại được.
+/models/
+*.tflite
+!ros2_ws/src/gesture_bringup/models/*.tflite
+
+# ---- Media ----
+*.mp4
+*.avi
+*.wav
+recordings/
+
+# ---- Cấu hình máy cá nhân ----
+.env
+
+# ---- Dữ liệu ----
+# Tập huấn luyện DẪN XUẤT — sinh lại bằng training/3_build_dataset.py.
+# Dữ liệu THÔ trong data/gestures/ thì GIỮ, vì thu lại tốn công nhất.
+data/dataset_v3.npz
+data/video/
+data/gestures_cu/

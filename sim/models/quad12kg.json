@@ -1,0 +1,46 @@
+# Mo hinh vat ly SITL (khong Gazebo) cho drone that cua du an.
+# CHI DUNG KY TU ASCII: bo doc json cua SITL panic khi gap chu co dau.
+#
+#   ./sim/run_sitl.sh --no-gazebo --real-params
+#
+# Nguon so lieu:
+#   KHAI BAO    mass 12 kg, 4 dong co, Hobbywing X8 100KV, pin LiPo 12S
+#   PIXHAWK     hoverThrOut = MOT_THST_HOVER 0.419 (ArduPilot tu hoc qua 35 chuyen
+#               bay, 9065 s), propExpo = MOT_THST_EXPO 0.65, pwm, spin min/max
+#   GIA DINH    (danh dau ???, can xac nhan) canh 30 inch, cheo 1.4 m, pin 16 Ah,
+#               55 A khi bay ngang 12 m/s nghieng 25 do
+#
+# hoverThrOut la so quan trong nhat: SITL suy ra luc day toi da tu no, nen lay
+# dung gia tri Pixhawk hoc duoc thi ga treo khop drone that ke ca khi so gia
+# dinh o tren lech.
+{
+    "mass" : 12.0,
+    "diagonal_size" : 1.4,          # ??? m, tam dong co cheo nhau
+
+    "refSpd" : 12.0,                # ??? m/s
+    "refAngle" : 25.0,              # ??? do
+    "refVoltage" : 46.0,            # V, 12S giua chung
+    "refCurrent" : 55.0,            # ??? A
+    "refAlt" : 10,
+    "refTempC" : 30,
+    "refBatRes" : 0.03,
+
+    "maxVoltage" : 50.4,            # 12S day
+    "battCapacityAh" : 16,          # ???
+
+    "propExpo" : 0.65,              # MOT_THST_EXPO
+    "refRotRate" : 90,
+    "hoverThrOut" : 0.42,           # MOT_THST_HOVER hoc duoc tren drone that
+
+    "pwmMin" : 1000,                # MOT_PWM_MIN
+    "pwmMax" : 2000,                # MOT_PWM_MAX
+    "spin_min" : 0.15,              # MOT_SPIN_MIN
+    "spin_max" : 0.95,              # MOT_SPIN_MAX
+    "slew_max" : 0,
+
+    # 4 canh 30 inch: 4 * pi * (0.381 m)^2
+    "disc_area" : 1.824,            # ??? theo co canh
+    "mdrag_coef" : 0.10,
+
+    "num_motors" : 4
+}

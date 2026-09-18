@@ -1,0 +1,25 @@
+# Tham số perception_node. Giá trị mặc định nằm ở gesture_perception/settings.py
+# (dùng chung với training/1_record.py). Đổi flip / pose_complexity / min_visibility
+# ở đây mà không quay lại dữ liệu là tạo lệch giữa lúc train và lúc bay.
+#
+# Đổi lúc đang chạy:  ros2 param set /perception_node one_euro false
+
+perception_node:
+  ros__parameters:
+    camera_index: -1            # -1 = tự dò webcam USB (Pi 5: video0 KHÔNG phải webcam)
+    camera_backend: auto        # Pi: v4l2 (auto tự chọn)
+    camera_width: 640
+    camera_height: 480
+    flip: true                  # PHẢI khớp FLIP_FRAME lúc quay dữ liệu
+
+    pose_complexity: 0          # 0 = Lite. 1 chậm gấp ~2 lần trên Pi 5
+    pose_detect_conf: 0.6
+    pose_track_conf: 0.5
+    min_visibility: 0.5
+
+    one_euro: true              # tắt để so độ chính xác bật/tắt trên Pi
+    tau_override: -1.0          # < 0 = dùng tau trong labels.json (0.96)
+
+    publish_keypoints: true
+    debug_image_hz: 0.0         # 2.0 để xem hình trên laptop qua rqt_image_view
+    show_window: false          # true khi Pi có màn hình + chạy desktop

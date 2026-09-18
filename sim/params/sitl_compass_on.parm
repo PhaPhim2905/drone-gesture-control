@@ -1,0 +1,4 @@
+# CHI DUNG TRONG SITL, KHONG ghi xuong Pixhawk.
+# Pixhawk 6C dang COMPASS_USE=0 -> SITL bao "Need Position Estimate", khong arm
+# duoc o GUIDED (do 2026-09-15). Bat la ban de thu logic cu chi trong SITL.
+COMPASS_USE,1

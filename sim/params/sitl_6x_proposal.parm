@@ -1,0 +1,34 @@
+# CHỈ SITL — ĐỀ XUẤT cấu hình cho Pixhawk 6X, thử trên drone ảo TRƯỚC khi ghi xuống board thật.
+#   ./sim/run_sitl.sh ... --proposal
+#
+# Vì sao: file Pixhawk 6C cũ (lưu sau vụ lật) có
+#   - công tắc mode = STABILIZE / POSHOLD / LAND: không có GUIDED lẫn LOITER -> pilot không
+#     trao quyền cho cử chỉ được, STOP của hệ cử chỉ lại trả về LOITER
+#   - FS_THR_ENABLE = 0: mất sóng tay cầm thì drone KHÔNG làm gì
+#
+# Bố trí tay cầm theo yêu cầu của anh (15/9):
+#   kênh 5  công tắc mode 3 nấc
+#   kênh 6  E-stop (Motor Emergency Stop)
+#   ARM/DISARM = chụm 2 cần vào trong 1.5 s (pixhawk_tools/lua/csc_arm.lua)
+#
+# Công tắc 3 nấc ra ~1000 / ~1500 / ~2000 -> rơi vào FLTMODE1-2 / 3-4 / 5-6.
+#   nấc THẤP  LOITER    pilot giữ vị trí; STOP của cử chỉ cũng trả về đây
+#   nấc GIỮA  ALT_HOLD  lái tay khi GPS kém (không cần vị trí)
+#   nấc CAO   GUIDED    trao quyền cho cử chỉ
+FLTMODE_CH,5
+FLTMODE1,5
+FLTMODE2,5
+FLTMODE3,2
+FLTMODE4,2
+FLTMODE5,4
+FLTMODE6,4
+RC5_OPTION,0
+RC6_OPTION,31
+# Mất sóng tay cầm -> LAND (giá trị đang dùng trên drone thật). 1 = RTL nếu muốn quay về.
+FS_THR_ENABLE,3
+# UniRC7 có cần ga LÒ XO về giữa: ArduPilot tính "ga thấp" từ nấc giữa (tự disarm sau hạ cánh,
+# phát hiện hạ cánh). Bitmask bit0 "Feedback from mid stick". KHÔNG bay STABILIZE/ACRO với ga lò xo.
+PILOT_THR_BHV,1
+# Chỉ arm bằng chụm cần (Lua), tắt arm ga-thấp + yaw-phải có sẵn của ArduPilot
+ARMING_RUDDER,0
+SCR_ENABLE,1

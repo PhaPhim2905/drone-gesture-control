@@ -1,0 +1,28 @@
+# MAVROS gọn cho Pi 5: chỉ nạp plugin mà command_node dùng.
+# Mặc định MAVROS nạp ~50 plugin; mỗi plugin là subscriber/publisher/timer riêng,
+# tốn CPU và RAM mà không ai đọc.
+#
+#   sys_status      /mavros/state, /mavros/extended_state, /mavros/set_mode
+#   sys_time        đồng bộ thời gian FCU
+#   command         /mavros/cmd/takeoff
+#   setpoint_raw    /mavros/setpoint_raw/local
+#   local_position  /mavros/local_position/pose  (xem vị trí khi mô phỏng)
+#   home_position   GUIDED cần home
+#
+# Cách MAVROS lọc: plugin bị bỏ khi KHỚP denylist VÀ KHÔNG khớp allowlist. Nên
+# allowlist một mình không có tác dụng — phải chặn "*" trước rồi mới mở từng cái.
+#
+# Thêm plugin: ghi tên vào allowlist. Kiểm plugin đã nạp trong log lúc khởi động
+# ("Plugin xxx initialized").
+
+/**:
+  ros__parameters:
+    plugin_denylist:
+      - "*"
+    plugin_allowlist:
+      - sys_status
+      - sys_time
+      - command
+      - setpoint_raw
+      - local_position
+      - home_position

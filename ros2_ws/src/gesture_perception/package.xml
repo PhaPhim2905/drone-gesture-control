@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>gesture_perception</name>
+  <version>3.0.0</version>
+  <description>Nhận diện cử chỉ toàn thân: camera, MediaPipe Pose, One-Euro, PCK, TFLite.</description>
+  <maintainer email="phaphim2905@gmail.com">Nguyen Pha Phim</maintainer>
+  <license>MIT</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>rcl_interfaces</exec_depend>
+  <exec_depend>gesture_interfaces</exec_depend>
+  <!-- mavros_msgs/State: chỉ nhận diện khi FCU ở GUIDED (mode_gate.py) -->
+  <exec_depend>mavros_msgs</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <!-- mediapipe, opencv-python, ai-edge-litert KHÔNG có gói rosdep: cài bằng
+       pip vào .venv theo requirements.txt -->
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

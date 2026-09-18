@@ -1,0 +1,29 @@
+# command_node khi bay MÔ PHỎNG (ArduPilot SITL + Gazebo).
+# Khác bản real đúng 1 chỗ, đánh dấu [SITL].
+
+command_node:
+  ros__parameters:
+    control_mode: GUIDED
+    handback_mode: LOITER       # STOP -> trả LOITER (giữ cả vị trí lẫn cao độ)
+    speed_xy: 1.0               # [SITL] m/s. Bản real 0.5
+    takeoff_alt: 2.0            # m
+
+    # Thời gian giữ (s). Số đo 2026-09-09, xem docstring command_logic.py
+    hold_sec: 1.0
+    hold_assume_guidance: 1.0
+    hold_land: 0.8
+    hold_stop: 0.6
+
+    watchdog_sec: 0.5           # không có frame cử chỉ mới -> HOVER
+    operator_lost_sec: 0.8      # NO_OPERATOR liên tục -> khoá
+    mode_grace_sec: 3.0
+
+    # Camera chỉ nhận diện khi FCU ĐÃ ở GUIDED (perception require_mode), nên cử chỉ
+    # không bao giờ tự xin GUIDED được. Pilot gạt công tắc kênh 5 (hoặc gõ "mode guided"
+    # ở MAVProxy nếu không có tay cầm).
+    request_guided_on_enable: false
+
+    # Tên ROLL theo hướng CỦA DRONE: ROLL_RIGHT = drone sang phải của nó =
+    # sang TRÁI của người điều khiển. Đổi true thì phải quay lại dữ liệu ROLL.
+    mirror_left_right: false
+    control_hz: 20.0

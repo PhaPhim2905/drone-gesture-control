@@ -1,0 +1,12 @@
+# Script chạy trên Pi / WSL phải giữ LF. CRLF làm bash báo "$'\r': command not found".
+*.sh text eol=lf
+*.py text eol=lf
+*.yaml text eol=lf
+*.msg text eol=lf
+*.xml text eol=lf
+*.cfg text eol=lf
+CMakeLists.txt text eol=lf
+ros2_ws/src/gesture_perception/resource/* text eol=lf
+ros2_ws/src/gesture_command/resource/* text eol=lf
+ros2_ws/src/gesture_bringup/resource/* text eol=lf
+*.tflite binary

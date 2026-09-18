@@ -1,0 +1,17 @@
+# Thư viện Python cho perception_node + doctor + pixhawk_tools.
+# Cài vào .venv tạo với --system-site-packages (scripts/pi_setup.sh làm sẵn).
+# ROS 2 (rclpy, mavros_msgs) KHÔNG cài bằng pip — đến từ apt.
+#
+# Train (TensorFlow) nằm ở .venv-train riêng trên laptop, không dùng file này.
+
+opencv-python==4.12.0.88
+# mediapipe PHAI giu 0.10.14 (1.0 bo mp.solutions -> perception_node sap)
+mediapipe==0.10.14
+numpy==2.2.6
+# ai-edge-litert 2.x chua co wheel ARM64 -> Pi dung 1.4.0. Da kiem op cua model.
+ai-edge-litert==2.2.0; platform_machine != "aarch64"
+ai-edge-litert==1.4.0; platform_machine == "aarch64"
+psutil==7.2.1
+# pixhawk_tools/ (chan doan, doc/ghi param). Duong bay chinh di qua MAVROS.
+pymavlink==2.4.49
+pyserial==3.5
